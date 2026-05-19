@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC01_VerifikasiHomepage</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>871a7d59-5f37-4c16-920f-31d6003d58e5</testCaseGuid>
+</TestCaseEntity>

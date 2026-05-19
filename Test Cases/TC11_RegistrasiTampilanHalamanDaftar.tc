@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC11_RegistrasiTampilanHalamanDaftar</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>7cfddcd1-8ef2-42da-8be4-912f52ae71bc</testCaseGuid>
+</TestCaseEntity>

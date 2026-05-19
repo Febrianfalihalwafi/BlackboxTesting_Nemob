@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC03_VerifikasiMenuSewaMobil</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>abd3958f-a321-410c-a0be-2fb14cdce30a</testCaseGuid>
+</TestCaseEntity>

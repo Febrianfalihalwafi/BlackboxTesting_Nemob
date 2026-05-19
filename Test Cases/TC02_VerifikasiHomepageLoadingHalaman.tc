@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC02_VerifikasiHomepageLoadingHalaman</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>88f91c1a-2815-47bc-b913-6765b2d5360e</testCaseGuid>
+</TestCaseEntity>

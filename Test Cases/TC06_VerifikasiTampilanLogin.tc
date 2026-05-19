@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC06_VerifikasiTampilanLogin</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>4166922f-3c47-4edb-9b32-af05b3a813f4</testCaseGuid>
+</TestCaseEntity>

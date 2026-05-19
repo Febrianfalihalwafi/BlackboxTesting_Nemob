@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC07_LoginKredensialValid</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>9fd19a0f-72ea-4268-b4c7-205869bd5a5a</testCaseGuid>
+</TestCaseEntity>

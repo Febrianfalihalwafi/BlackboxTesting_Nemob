@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC12_RegistrasiDataValid</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a8fd00df-0949-47b9-a7a2-35ec6be6ac3b</testCaseGuid>
+</TestCaseEntity>

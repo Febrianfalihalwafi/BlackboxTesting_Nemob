@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC05_VerifikasiMenuSewaMobilLepasKunci</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>7c0eec9e-9cb5-40f7-924c-1f0f994264cb</testCaseGuid>
+</TestCaseEntity>

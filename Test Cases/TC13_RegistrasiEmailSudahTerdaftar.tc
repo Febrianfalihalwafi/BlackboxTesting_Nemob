@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC13_RegistrasiEmailSudahTerdaftar</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>3ecd61fe-8bf4-4927-b57c-912b0e0dae4c</testCaseGuid>
+</TestCaseEntity>
