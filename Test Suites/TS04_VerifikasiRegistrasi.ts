@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>TS_Verifikasi_Menu</name>
+   <name>TS04_VerifikasiRegistrasi</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -10,26 +10,33 @@
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>true</rerunImmediately>
-   <testSuiteGuid>fb3a1e47-4b97-4de4-ba04-95e93aa6cb0b</testSuiteGuid>
+   <testSuiteGuid>54ba5aa7-1da3-4a2b-8284-7061165c6b15</testSuiteGuid>
    <testCaseLink>
-      <guid>8c1d44ca-63fc-4037-99fe-4554c3c517f5</guid>
+      <guid>a3e1fd42-124d-45f6-92da-ff8183d415ec</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/TC03_VerifikasiMenuSewaMobil</testCaseId>
+      <testCaseId>Test Cases/TC11_RegistrasiTampilanHalamanDaftar</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>375bb467-ba47-422a-b9d6-3e6381d06b1a</guid>
+      <guid>425424e2-8f50-40c2-811b-488eb6a582b4</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/TC04_VerifikasiMenuSewaMobildengansopir</testCaseId>
+      <testCaseId>Test Cases/TC12_RegistrasiDataValid</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>77389a8a-c8be-48f0-ad23-9e16e1f6696a</guid>
+      <guid>d29e7697-942d-46c2-a66e-aee0d5d47b39</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/TC05_VerifikasiMenuSewaMobilLepasKunci</testCaseId>
+      <testCaseId>Test Cases/TC13_RegistrasiEmailSudahTerdaftar</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>1480fa31-dde1-4457-a6dd-965e02a993db</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/TC14_RegistrasiPasswordTidakCocok</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
 </TestSuiteEntity>

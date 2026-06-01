@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>TS_Homepage_Verification</name>
+   <name>TS01_VerifikasiHomepage</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -10,16 +10,16 @@
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>true</rerunImmediately>
-   <testSuiteGuid>703f5eb8-7075-4c0a-94d1-a6caa995a91d</testSuiteGuid>
+   <testSuiteGuid>d89b6cda-3f67-403b-bf27-dd7d47fd1645</testSuiteGuid>
    <testCaseLink>
-      <guid>0ea80533-089a-40be-9bd0-9b0494541bcd</guid>
+      <guid>01d3e2d0-a508-49d7-9868-7035dd545a12</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/TC01_VerifikasiHomepage</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>d6c74a80-0f8f-4afc-b8f6-1550ea7a1b1d</guid>
+      <guid>3e5cc9ea-0810-4b5c-8b85-0675486ea521</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/TC02_VerifikasiHomepageLoadingHalaman</testCaseId>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC21_PemesananKlikTombolPesan</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>946016cf-6b90-4242-9976-9123bc2abccb</testCaseGuid>
+</TestCaseEntity>

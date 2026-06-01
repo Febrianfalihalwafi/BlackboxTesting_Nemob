@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC23_PemesananValidasiDataTanpaUploadKTPdanSIM</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>5b6a9c21-b873-4eaa-82e0-70b7c82a220b</testCaseGuid>
+</TestCaseEntity>

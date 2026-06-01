@@ -17,7 +17,7 @@ JavascriptExecutor js = (JavascriptExecutor) driver
 
 WebUI.delay(3)
 
-// --- LANGKAH SILANG IKLAN ---
+// --- SILANG IKLAN ---
 try {
     WebElement tombolX = driver.findElement(By.xpath("//*[name()='svg' and contains(@class,'yarl__icon')]/parent::*"))
     js.executeScript("arguments[0].click();", tombolX)
@@ -47,7 +47,7 @@ catch (Exception e) {
 // 1. Cari elemen submenu "Dengan Supir"
 WebElement submenu = driver.findElement(By.xpath("//span[contains(text(),'Dengan Supir')] | //a[contains(.,'Dengan Supir')]"))
 
-// 2. Klik menggunakan JavaScript Click agar lebih aman dari halangan overlay animasi dropdown
+// 2. Klik menggunakan JavaScript Click
 js.executeScript("arguments[0].click();", submenu)
 
 // 3. Beri jeda waktu agar browser selesai melakukan loading perpindahan halaman
@@ -57,7 +57,6 @@ WebUI.delay(3)
 String urlSaatIni = driver.getCurrentUrl()
 String urlDiharapkan = "https://nemob.id/id/sewa-rental-mobil-murah"
 
-// Gunakan assertion untuk memastikan URL saat ini sama dengan URL di dokumen excel kamu
 assert urlSaatIni.equals(urlDiharapkan)
 println("Verifikasi Berhasil! Pengguna diarahkan ke halaman: " + urlSaatIni)
 

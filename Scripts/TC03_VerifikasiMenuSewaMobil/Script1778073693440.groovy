@@ -1,63 +1,82 @@
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.webui.driver.DriverFactory
-
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.JavascriptExecutor
 
-// 1. Buka homepage
 WebUI.openBrowser('')
 WebUI.navigateToUrl('https://nemob.id/id')
 WebUI.maximizeWindow()
 
 WebDriver driver = DriverFactory.getWebDriver()
 JavascriptExecutor js = (JavascriptExecutor) driver
-
 WebUI.delay(3)
 
-// --- LANGKAH SILANG IKLAN ---
+// --- TUTUP POPUP IKLAN ---
 try {
-    // Klik tombol X popup
-    WebElement tombolX = driver.findElement(By.xpath("//*[name()='svg' and contains(@class,'yarl__icon')]/parent::*"))
+    WebElement tombolX = driver.findElement(By.xpath(
+        "//*[name()='svg' and contains(@class,'yarl__icon')]/parent::*"
+    ))
     js.executeScript("arguments[0].click();", tombolX)
-    println("Popup berhasil ditutup")
+    println("✓ Popup berhasil ditutup")
     WebUI.delay(2)
+} catch (Exception e) {
+    println("- Popup tidak muncul atau sudah ditutup")
 }
-catch(Exception e) {
-    println("Popup tidak muncul atau sudah ditutup")
-}
-// -------------------------------------
 
-
-// --- BAGIAN YANG DIGANTI (ALUR DROPDOWN & HOVER) ---
-
-// 1. Cari menu "Sewa Mobil" khusus yang berupa Link (tag <a>) di navbar agar tidak salah klik
-WebElement menu = driver.findElement(By.xpath("//a[contains(., 'Sewa Mobil')]"))
-
-// 2. Pastikan halaman ter-scroll ke arah menu navbar tersebut
+// --- HOVER MENU SEWA MOBIL ---
+WebElement menu = driver.findElement(By.xpath(
+    "//ul[@id='mainmenu']//a[@class='menu-item' and contains(.,'Sewa Mobil')]"
+))
 js.executeScript("arguments[0].scrollIntoView(true);", menu)
 WebUI.delay(1)
 
-// 3. Lakukan hover (mengarahkan kursor) menggunakan Actions bawaan Selenium
 try {
     Actions actions = new Actions(driver)
     actions.moveToElement(menu).build().perform()
     WebUI.delay(1)
-} 
-catch (Exception e) {
-    // Jika hover biasa gagal, paksa browser membuka dropdown lewat simulasi event JavaScript
-    js.executeScript("var evObj = document.createEvent('MouseEvents'); evObj.initEvent('mouseenter', true, false); arguments[0].dispatchEvent(evObj);", menu)
+} catch (Exception e) {
+    js.executeScript(
+        "var evObj = document.createEvent('MouseEvents');" +
+        "evObj.initEvent('mouseenter', true, false);" +
+        "arguments[0].dispatchEvent(evObj);", menu
+    )
     WebUI.delay(1)
 }
 
-// 4. Cari Submenu "Dengan Supir" di dalam dropdown yang berhasil muncul
-WebElement submenu = driver.findElement(By.xpath("//span[contains(text(),'Dengan Supir')] | //a[contains(.,'Dengan Supir')]"))
+// --- VERIFIKASI SEMUA ITEM DROPDOWN (sesuai inspect element) ---
+// Semua item adalah <a class="menu-item"> di dalam ul > li
+List<String> expectedItems = [
+    'Dengan Supir',
+    'Lepas Kunci',
+    'Nemob Untuk Bisnis',
+    'Mobil Spesial',
+    'Perusahaan'
+]
 
-// 5. Validasi apakah sub-menu tersebut sudah terlihat (tampil) di layar
-assert submenu.isDisplayed()
-println("Dropdown berhasil tampil dan diverifikasi!")
+List<String> notFound = []
 
-// 6. Selesai dan tutup browser
+for (String item : expectedItems) {
+    try {
+        WebElement submenu = driver.findElement(By.xpath(
+            "//ul[@id='mainmenu']//ul//a[@class='menu-item' and contains(.,'" + item + "')]"
+        ))
+        assert submenu.isDisplayed(), "Item '" + item + "' tidak tampil"
+        println("✓ Dropdown item tampil: " + item)
+    } catch (Exception e) {
+        println("✗ Dropdown item TIDAK ditemukan: " + item)
+        notFound.add(item)
+    }
+}
+
+// --- HASIL AKHIR ---
+if (notFound.isEmpty()) {
+    println("=== TC03 PASSED: Semua item dropdown berhasil diverifikasi ===")
+} else {
+    println("=== TC03 FAILED: Item tidak ditemukan: " + notFound.join(", ") + " ===")
+    assert false, "Beberapa item dropdown tidak tampil: " + notFound.join(", ")
+}
+
 WebUI.closeBrowser()

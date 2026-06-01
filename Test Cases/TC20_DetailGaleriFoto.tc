@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC20_DetailGaleriFoto</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>fa5ca7ff-2291-44b4-8906-713e73a8e3b9</testCaseGuid>
+</TestCaseEntity>

@@ -73,8 +73,8 @@ WebUI.delay(3)
 
 // --- VALIDASI: Pesan error email sudah terdaftar harus muncul ---
 String isiHalamanWeb = driver.getPageSource()
-boolean isPesanErrorMuncul = isiHalamanWeb.contains("User is already exist") ||
-                          
+boolean isPesanErrorMuncul = isiHalamanWeb.contains("User is already exist") 
+
 assert isPesanErrorMuncul == true : "GAGAL! Sistem seharusnya menolak email yang sudah terdaftar."
 println("Verifikasi Sukses! Sistem menampilkan pesan error untuk email sudah terdaftar.")
 

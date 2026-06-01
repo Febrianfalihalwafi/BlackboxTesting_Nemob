@@ -73,11 +73,10 @@ WebUI.delay(3)
 
 // --- VALIDASI: Pesan error password tidak cocok harus muncul ---
 String isiHalamanWeb = driver.getPageSource()
-boolean isPesanErrorMuncul = isiHalamanWeb.contains("sama") ||
-                             isiHalamanWeb.contains("match")
+boolean isPesanErrorMuncul = isiHalamanWeb.contains("Passwords does not match!")
 
-assert isPesanErrorMuncul == true : "GAGAL! Sistem seharusnya menampilkan pesan error konfirmasi password tidak cocok."
-println("Verifikasi Sukses! Sistem menampilkan pesan error konfirmasi password tidak cocok.")
+assert isPesanErrorMuncul == true : "GAGAL! Sistem seharusnya menampilkan pesan 'Passwords does not match!'"
+println("✓ Verifikasi Sukses! Sistem menampilkan pesan: Passwords does not match!")
 
 // Tutup browser
 WebUI.closeBrowser()

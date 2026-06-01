@@ -24,39 +24,46 @@ WebElement dropdownLokasi = wait.until(ExpectedConditions.elementToBeClickable(
 ))
 dropdownLokasi.click()
 WebUI.delay(1)
-
-WebElement inputSelect = driver.findElement(
-    By.xpath("(//div[contains(@class,'select__control')])[1]//input")
-)
-inputSelect.sendKeys("Bali")
+driver.findElement(By.xpath("(//div[contains(@class,'select__control')])[1]//input")).sendKeys("Bali")
 WebUI.delay(2)
-
-WebElement opsiLokasi = wait.until(ExpectedConditions.elementToBeClickable(
+wait.until(ExpectedConditions.elementToBeClickable(
     By.xpath("//div[contains(@class,'select__option')]")
-))
-opsiLokasi.click()
+)).click()
 WebUI.delay(1)
 
-// 2. Isi Tanggal Mulai
+// 2. Pilih Model Mobil - dropdown kedua (index 2)
+WebElement dropdownModel = wait.until(ExpectedConditions.elementToBeClickable(
+    By.xpath("(//div[contains(@class,'select__control')])[2]")
+))
+dropdownModel.click()
+WebUI.delay(1)
+driver.findElement(By.xpath("(//div[contains(@class,'select__control')])[2]//input")).sendKeys("Hiace")
+WebUI.delay(2)
+wait.until(ExpectedConditions.elementToBeClickable(
+    By.xpath("//div[contains(@class,'select__option')]")
+)).click()
+WebUI.delay(1)
+
+// 3. Isi Tanggal Mulai
 WebElement inputTanggalMulai = wait.until(ExpectedConditions.elementToBeClickable(
     By.xpath("(//div[contains(@class,'date-time-field')]//input)[1]")
 ))
 inputTanggalMulai.click()
 WebUI.delay(1)
 inputTanggalMulai.sendKeys(Keys.chord(Keys.CONTROL, "a"))
-inputTanggalMulai.sendKeys("05/22/2026")
+inputTanggalMulai.sendKeys("06/22/2026")
 WebUI.delay(1)
 inputTanggalMulai.sendKeys(Keys.TAB)
 WebUI.delay(1)
 
-// 3. Isi Tanggal Selesai
+// 4. Isi Tanggal Selesai
 WebElement inputTanggalSelesai = wait.until(ExpectedConditions.elementToBeClickable(
     By.xpath("(//div[contains(@class,'date-time-field')]//input)[2]")
 ))
 inputTanggalSelesai.click()
 WebUI.delay(1)
 inputTanggalSelesai.sendKeys(Keys.chord(Keys.CONTROL, "a"))
-inputTanggalSelesai.sendKeys("05/26/2026")
+inputTanggalSelesai.sendKeys("06/26/2026")
 WebUI.delay(1)
 inputTanggalSelesai.sendKeys(Keys.TAB)
 WebUI.delay(2)
@@ -64,7 +71,7 @@ WebUI.delay(2)
 js.executeScript("document.activeElement.blur();")
 WebUI.delay(1)
 
-// 4. Klik tombol Cari Mobil - gunakan id="send_message" (input type=submit)
+// 5. Klik tombol Cari Mobil
 WebElement tombolCari = wait.until(ExpectedConditions.elementToBeClickable(
     By.id("send_message")
 ))
@@ -73,18 +80,16 @@ WebUI.delay(1)
 js.executeScript("arguments[0].click();", tombolCari)
 WebUI.delay(5)
 
-// 5. Validasi
-String currentUrl = driver.getCurrentUrl()
+
+// 6. Validasi
 String isiHalaman = driver.getPageSource()
 
-boolean isHasilTampil =
-        currentUrl.contains("sewa") &&
-        (isiHalaman.contains("Harga 1 Hari") ||
-         isiHalaman.contains("Rp"))
+boolean isFilterBerhasil =
+        isiHalaman.toLowerCase().contains("hiace")
 
-assert isHasilTampil :
-       "GAGAL! Sistem tidak menampilkan hasil pencarian mobil dengan sopir."
+assert isFilterBerhasil :
+       "GAGAL! Sistem tidak menampilkan mobil Hiace sesuai filter."
 
-println("Verifikasi Sukses! Sistem menampilkan hasil pencarian mobil dengan sopir.")
+println("Verifikasi Sukses! Filter jenis mobil Hiace berfungsi.")
 
 WebUI.closeBrowser()

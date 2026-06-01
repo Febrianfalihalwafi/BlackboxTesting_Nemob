@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC22_PemesananValidasiFormPemesananKosong</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>3cb21ec7-7e82-4dae-9e9d-4924503b98b8</testCaseGuid>
+</TestCaseEntity>

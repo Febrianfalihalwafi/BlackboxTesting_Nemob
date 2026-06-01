@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import java.time.Duration
 
 WebUI.openBrowser('')
-WebUI.navigateToUrl('https://nemob.id/id/sewa-rental-mobil-murah')
+WebUI.navigateToUrl('https://nemob.id/id/sewa-rental-mobil-murah-lepas-kunci')
 WebUI.maximizeWindow()
 
 WebDriver driver = DriverFactory.getWebDriver()
@@ -18,23 +18,17 @@ JavascriptExecutor js = (JavascriptExecutor) driver
 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15))
 WebUI.delay(3)
 
-// 1. Pilih Lokasi
+// 1. Pilih Lokasi - Jakarta
 WebElement dropdownLokasi = wait.until(ExpectedConditions.elementToBeClickable(
     By.xpath("(//div[contains(@class,'select__control')])[1]")
 ))
 dropdownLokasi.click()
 WebUI.delay(1)
-
-WebElement inputSelect = driver.findElement(
-    By.xpath("(//div[contains(@class,'select__control')])[1]//input")
-)
-inputSelect.sendKeys("Bali")
+driver.findElement(By.xpath("(//div[contains(@class,'select__control')])[1]//input")).sendKeys("Jakarta")
 WebUI.delay(2)
-
-WebElement opsiLokasi = wait.until(ExpectedConditions.elementToBeClickable(
+wait.until(ExpectedConditions.elementToBeClickable(
     By.xpath("//div[contains(@class,'select__option')]")
-))
-opsiLokasi.click()
+)).click()
 WebUI.delay(1)
 
 // 2. Isi Tanggal Mulai
@@ -64,7 +58,7 @@ WebUI.delay(2)
 js.executeScript("document.activeElement.blur();")
 WebUI.delay(1)
 
-// 4. Klik tombol Cari Mobil - gunakan id="send_message" (input type=submit)
+// 4. Klik tombol Cari Mobil
 WebElement tombolCari = wait.until(ExpectedConditions.elementToBeClickable(
     By.id("send_message")
 ))
@@ -73,18 +67,32 @@ WebUI.delay(1)
 js.executeScript("arguments[0].click();", tombolCari)
 WebUI.delay(5)
 
-// 5. Validasi
-String currentUrl = driver.getCurrentUrl()
+// 5. Klik tombol Sewa Mobil pertama
+WebElement tombolSewaMobil = wait.until(ExpectedConditions.elementToBeClickable(
+    By.xpath("(//a[contains(@class,'btn-main') and contains(text(),'Sewa Mobil')])[1]")
+))
+js.executeScript("arguments[0].scrollIntoView({block:'center'});", tombolSewaMobil)
+WebUI.delay(2)
+js.executeScript("arguments[0].click();", tombolSewaMobil)
+WebUI.delay(5)
+
+// 6. Klik foto mobil di halaman detail untuk buka galeri
+// Foto menggunakan swiper-slide dengan class swiper-slide-car-image
+WebElement fotoMobil = wait.until(ExpectedConditions.elementToBeClickable(
+    By.xpath("(//div[contains(@class,'swiper-slide-car-image')]//img)[1]")
+))
+js.executeScript("arguments[0].scrollIntoView({block:'center'});", fotoMobil)
+WebUI.delay(2)
+js.executeScript("arguments[0].click();", fotoMobil)
+WebUI.delay(3)
+
+// 7. Validasi galeri foto terbuka (yarl lightbox)
 String isiHalaman = driver.getPageSource()
+boolean isGaleriTerbuka = isiHalaman.contains("yarl") ||
+                          isiHalaman.contains("yarl__slide") ||
+                          isiHalaman.contains("yarl__carousel")
 
-boolean isHasilTampil =
-        currentUrl.contains("sewa") &&
-        (isiHalaman.contains("Harga 1 Hari") ||
-         isiHalaman.contains("Rp"))
-
-assert isHasilTampil :
-       "GAGAL! Sistem tidak menampilkan hasil pencarian mobil dengan sopir."
-
-println("Verifikasi Sukses! Sistem menampilkan hasil pencarian mobil dengan sopir.")
+assert isGaleriTerbuka == true : "GAGAL! Galeri foto tidak terbuka setelah klik foto."
+println("Verifikasi Sukses! Galeri foto berhasil dibuka, user dapat melihat foto lainnya.")
 
 WebUI.closeBrowser()

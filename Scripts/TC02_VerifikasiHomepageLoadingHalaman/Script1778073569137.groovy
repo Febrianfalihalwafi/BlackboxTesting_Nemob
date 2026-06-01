@@ -1,34 +1,36 @@
-// Import library WebUI bawaan Katalon untuk kontrol browser
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-
-// Import By dan WebDriver dari Selenium (dipakai jika perlu cari elemen HTML)
-import org.openqa.selenium.By
-import org.openqa.selenium.WebDriver
-
-// Import DriverFactory untuk mengambil instance browser yang sedang berjalan
 import com.kms.katalon.core.webui.driver.DriverFactory
 
-// Buka browser baru (kosong)
+// Membuka browser Chrome baru dalam keadaan kosong (belum ada halaman)
 WebUI.openBrowser('')
 
-// Catat waktu SEBELUM membuka halaman (dalam milidetik sejak 1 Jan 1970)
+// Mencatat waktu SEBELUM navigasi dimulai, dalam satuan milidetik
+// System.currentTimeMillis() mengambil waktu saat ini dari sistem operasi
 long start = System.currentTimeMillis()
 
-// Navigasi ke URL target — INI yang diukur waktunya
+// Perintah navigasi ke URL target — bagian INI yang diukur waktunya
 WebUI.navigateToUrl("https://nemob.id/id")
 
-// Catat waktu SESUDAH halaman selesai dimuat
+// Mencatat waktu SESUDAH halaman selesai dimuat, dalam satuan milidetik
 long end = System.currentTimeMillis()
 
-// Hitung selisih waktu: (akhir - awal) dibagi 1000 → dikonversi ke DETIK
-long load = (end - start) / 1000
+// Menghitung selisih waktu antara sebelum dan sesudah navigasi
+// Dibagi 1000.0 (bukan 1000) agar hasilnya berupa angka desimal yang akurat
+// Contoh: jika selisih = 5214ms → load = 5.214 detik
+// Jika dibagi 1000 (integer), hasilnya dibulatkan → 5 (tidak akurat)
+double load = (end - start) / 1000.0
 
-// Tampilkan hasil waktu loading di Console Katalon
-println(load)
+// Menampilkan hasil waktu loading di Console Katalon agar bisa dilihat saat test berjalan
+println("Waktu loading: " + load + " detik")
 
-// ASSERTION: pastikan waktu loading kurang dari 10 detik
-// Jika >= 10 detik → test FAILED, jika < 10 detik → test PASSED
-assert load < 10
+// ASSERTION (Validasi utama test ini):
+// Memastikan waktu loading KURANG DARI 10 detik
+// Jika load >= 10 detik → test otomatis FAILED dan menampilkan pesan error
+// Jika load < 10 detik  → test PASSED, halaman dianggap normal
+assert load < 10, "Loading melebihi batas normal! Waktu aktual: " + load + " detik"
 
-// Tutup browser setelah pengujian selesai
+// Menampilkan pesan konfirmasi jika test berhasil
+println("✓ Halaman dimuat dalam waktu normal: " + load + " detik")
+
+// Menutup browser setelah pengujian selesai untuk membebaskan memori
 WebUI.closeBrowser()

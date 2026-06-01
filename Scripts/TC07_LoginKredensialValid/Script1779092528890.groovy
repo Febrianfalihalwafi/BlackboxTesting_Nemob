@@ -19,7 +19,7 @@ WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10))
 
 WebUI.delay(3)
 
-// --- LANGKAH SILANG IKLAN POP-UP ---
+// --- SILANG IKLAN POP-UP ---
 try {
     WebElement tombolX = driver.findElement(By.xpath("//*[name()='svg' and contains(@class,'yarl__icon')]/parent::*"))
     js.executeScript("arguments[0].click();", tombolX)
